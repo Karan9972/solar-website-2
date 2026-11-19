@@ -1562,6 +1562,14 @@ footer::before {
   margin-bottom: 48px;
 }
 
+.footer-logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+}
+
 .footer-brand p {
   font-size: 14px;
   line-height: 1.75;
