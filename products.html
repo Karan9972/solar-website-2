@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daypower LLP – Best Solar EPC Contractors in India</title>
+  <meta name="description"
+    content="Daypower Solutions specializes in commercial and industrial solar EPC services across India. Get a free consultation today." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ───────────── PRODUCTS GALLERY ───────────── */
+    #products-hero {
+      padding: 120px 0 60px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2d40 100%);
+      text-align: center;
+      color: white;
+    }
+
+    .products-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .products-sub {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    #products-section {
+      padding: 80px 0;
+      background: #f8fafc;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .product-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      background: #fff;
+    }
+
+    .product-img-wrap {
+      width: 100%;
+      height: 75%;
+      overflow: hidden;
+    }
+
+    .product-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .product-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .product-details {
+      padding: 16px;
+      text-align: center;
+      background: white;
+      height: 25%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .product-details h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .product-details p {
+      color: var(--sun-dark);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Lightbox Modal */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.95);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #lightbox img,
+    #lightbox video {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: none;
+    }
+
+    #lightbox.active img.active-media,
+    #lightbox.active video.active-media {
+      display: block;
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+      z-index: 10000;
+    }
+
+    .lightbox-close:hover {
+      color: var(--sun);
+    }
+
+    /* Video badge overlay */
+    .media-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(4px);
+      z-index: 2;
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 37%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(245, 158, 11, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      z-index: 2;
+    }
+
+    .product-item:hover .play-overlay {
+      transform: translate(-50%, -50%) scale(1.15);
+      background: var(--sun);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i>+91 94375 27857</span>
+        <span><i class="fas fa-envelope"></i>enquiry@daypower.in</span>
+      </div>
+      <div class="topbar-right">
+        <span><i class="fas fa-map-marker-alt"></i>India | Pan-India Operations</span>
+        <a href="https://wa.me/919437527857?text=Hello%2C%20I%20want%20a%20free%20solar%20consultation!"
+          target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="Day Power Logo" class="logo-img">
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li>
+          <a href="index.html#services">Services <i class="fas fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="index.html#srv-construction"><i class="fas fa-hard-hat"></i>Solar EPC</a>
+            <a href="index.html#srv-rooftop"><i class="fas fa-solar-panel"></i>Rooftop & Ground-Mounted Solar</a>
+            <a href="index.html#srv-om"><i class="fas fa-tools"></i>O&M Services</a>
+            <a href="index.html#srv-consultancy"><i class="fas fa-lightbulb"></i>Consultancy</a>
+            <a href="index.html#srv-lighting"><i class="fas fa-bolt"></i>Virtual Net Metering </a>
+            <a href="index.html#srv-battery"><i class="fas fa-battery-full"></i>Group Net Metering</a>
+          </div>
+        </li>
+        <li><a href="products.html" class="active">Project Gallery</a></li>
+        <li><a href="calculator.html">Savings Calculator</a></li>
+        <li><a href="subsidy.html">Govt Subsidy</a></li>
+        <li><a href="index.html#why">Why Us</a></li>
+        <li><a href="index.html#contact" class="nav-cta-btn">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <!-- ══ PRODUCTS HERO ══ -->
+  <section id="products-hero">
+    <div class="container">
+      <h1 class="products-title">Our <span style="color:var(--sun);">Projects</span></h1>
+      <p class="products-sub">Explore our high-efficiency solar panels, inverters, and premium mounting structures used
+        across all our installations.</p>
+    </div>
+  </section>
+
+  <!-- ══ PRODUCTS GRID ══ -->
+  <section id="products-section">
+    <div class="container products-grid">
+      <!-- Product 1 -->
+      <div class="product-item" onclick="openLightbox('p1.jpeg')">
+        <div class="product-img-wrap">
+          <img src="p1.jpeg" alt="High-Efficiency TopCon Bifacial Panels">
+        </div>
+        <div class="product-details">
+          <h3>High-Efficiency TopCon Bifacial Panels</h3>
+          <p>Tier-1 Solar Modules</p>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-item" onclick="openLightbox('p2.jpeg')">
+        <div class="product-img-wrap">
+          <img src="p2.jpeg" alt="On-Grid Commercial Solar Project">
+        </div>
+        <div class="product-details">
+          <h3>On-Grid Commercial Solar Project</h3>
+          <p>Tier-1 Inverter & Module Setup</p>
+        </div>
+      </div>
+      <!-- Project 3 -->
+      <div class="product-item" onclick="openLightbox('p3.jpeg')">
+        <div class="product-img-wrap">
+          <img src="p3.jpeg" alt="Residential Rooftop Solar">
+        </div>
+        <div class="product-details">
+          <h3>Residential Rooftop Solar</h3>
+          <p>10KWP Home Project</p>
+        </div>
+      </div>
+      <!-- Project 4 -->
+      <div class="product-item" onclick="openLightbox('p4.jpg')">
+        <div class="product-img-wrap">
+          <img src="p4.jpg" alt="Commercial Hybrid Project">
+        </div>
+        <div class="product-details">
+          <h3>Commercial Hybrid Project</h3>
+          <p>50KWP Solar + BEES</p>
+        </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="product-item" onclick="openLightbox('p5.jpg')">
+        <div class="product-img-wrap">
+          <img src="p5.jpg" alt="Industrial Solar Project">
+        </div>
+        <div class="product-details">
+          <h3>Industrial Solar Project</h3>
+          <p>300KWP Solar Project </p>
+        </div>
+      </div>
+      <!-- Project 6 -->
+      <div class="product-item" onclick="openLightbox('p6.jpg')">
+        <div class="product-img-wrap">
+          <img src="p6.jpg" alt=" Industrial Work-Based Project">
+        </div>
+        <div class="product-details">
+          <h3>Industrial Work-Based Project</h3>
+          <p>180KWP Solar Project</p>
+        </div>
+      </div>
+
+      <!-- Project Video 1 (v1) -->
+      <div class="product-item" onclick="openLightbox('v1.mp4')">
+        <div class="media-badge"><i class="fas fa-video"></i> Video Showcase</div>
+        <div class="play-overlay"><i class="fas fa-play"></i></div>
+        <div class="product-img-wrap">
+          <img src="p7.png" alt="Video Project 1">
+        </div>
+        <div class="product-details">
+          <h3>Sri Mayuri Biscuits Company Pvt Ltd</h3>
+          <p>380kWp Grid Connected Solar Power Plant</p>
+        </div>
+      </div>
+
+      <!-- Project Video 2 (v2) -->
+      <div class="product-item" onclick="openLightbox('v2.mp4')">
+        <div class="media-badge"><i class="fas fa-video"></i> Video Showcase</div>
+        <div class="play-overlay"><i class="fas fa-play"></i></div>
+        <div class="product-img-wrap">
+          <img src="p8.jpeg" alt="Video Project 2">
+        </div>
+        <div class="product-details">
+          <h3> Tara Tarinee Agro Impex</h3>
+          <p>500kWp Grid Connected Solar Power Plant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightboxObj()">&times;</span>
+    <img id="lightbox-img" src="" alt="Product Image">
+    <video id="lightbox-video" controls autoplay playsinline style="display:none;"></video>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+            <div
+              style="width:36px;height:36px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">
+              ☀️</div>
+            <span style="font-size:20px;font-weight:900;color:white;">Day<span
+                style="color:#f59e0b;">power</span></span>
+          </div>
+          <p>Turning sunlight into opportunity with trusted solar EPC solutions across India. Your partner in clean
+            energy transition.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919437527857" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="itss_karan_2005"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Rooftop Solar</a></li>
+            <li><a href="#">EPC Construction</a></li>
+            <li><a href="#">O&M Services</a></li>
+            <li><a href="#">Consultancy</a></li>
+            <li><a href="#">Energy Audit</a></li>
+            <li><a href="#">Battery Storage</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Project Gallery</a></li>
+            <li><a href="#">Why Choose Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+919437527857"><i class="fas fa-phone"
+                  style="color:var(--sun);margin-right:7px;font-size:11px;"></i>+91 94375 27857</a></li>
+            <li><a href="mailto:enquiry@daypower.in"><i class="fas fa-envelope"
+                  style="color:var(--sun);margin-right:7px;font-size:11px;"></i>enquiry@daypower.in</a></li>
+            <li><a href="https://wa.me/919437527857" target="_blank"><i class="fab fa-whatsapp"
+                  style="color:#25d366;margin-right:7px;font-size:12px;"></i>WhatsApp Us</a></li>
+          </ul>
+          <div style="margin-top:20px;">
+            <a href="https://wa.me/919437527857?text=Hi%2C%20I%20need%20solar%20consultation!" target="_blank"
+              class="btn btn-green" style="font-size:13px;padding:10px 18px;border-radius:10px;">
+              <i class="fab fa-whatsapp"></i>Quick Chat
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Daypower LLP. All rights reserved.</span>
+        <span>Made with ☀️ for a greener India</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ WHATSAPP FLOAT BUTTON ══ -->
+  <div id="wa-float">
+    <div class="wa-bubble">💬 Chat with us on WhatsApp!</div>
+    <a href="https://wa.me/919437527857?text=Hello%2C%20I%27m%20interested%20in%20solar%20solutions!" target="_blank"
+      class="wa-btn" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
+
+    function openLightbox(src) {
+      if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.ogg') || src.startsWith('v1') || src.startsWith('v2')) {
+        lightboxImg.style.display = 'none';
+        lightboxImg.classList.remove('active-media');
+
+        lightboxVideo.src = src;
+        lightboxVideo.style.display = 'block';
+        lightboxVideo.classList.add('active-media');
+        lightboxVideo.play().catch(e => console.log('Autoplay blocked:', e));
+      } else {
+        lightboxVideo.pause();
+        lightboxVideo.src = '';
+        lightboxVideo.style.display = 'none';
+        lightboxVideo.classList.remove('active-media');
+
+        lightboxImg.src = src;
+        lightboxImg.style.display = 'block';
+        lightboxImg.classList.add('active-media');
+      }
+
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+        closeLightboxObj();
+      }
+    }
+    function closeLightboxObj() {
+      lightbox.classList.remove('active');
+      if (lightboxVideo) {
+        lightboxVideo.pause();
+        lightboxVideo.src = '';
+      }
+      document.body.style.overflow = 'auto';
+    }
+
+    // Scroll effect for navbar
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+  </script>
+
+</body>
+
+</html>

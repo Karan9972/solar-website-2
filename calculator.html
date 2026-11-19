@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Saving Calculator | Estimate Your Solar Energy Savings | Daypower LLP</title>
+  <meta name="description"
+    content="Use Daypower's Solar Saving Calculator to estimate energy savings, required system size, panels, and ROI for Residential, Commercial & Industrial properties." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════════════
+       WAAREE-STYLE SOLAR SAVINGS CALCULATOR
+    ══════════════════════════════════════════════ */
+    :root {
+      --w-primary: #0db02b;
+      --w-primary-dark: #0a8f23;
+      --w-dark: #111827;
+      --w-navy: #0f172a;
+      --w-gray-bg: #f8fafc;
+      --w-border: #e5e7eb;
+      --w-sun: #f59e0b;
+    }
+
+    #waaree-hero {
+      padding: 130px 0 60px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2d40 100%);
+      text-align: center;
+      color: white;
+    }
+
+    .waaree-breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .waaree-breadcrumb a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+    }
+
+    .waaree-breadcrumb a:hover {
+      color: var(--sun);
+    }
+
+    .waaree-hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .waaree-hero-title span {
+      color: var(--sun);
+    }
+
+    .waaree-hero-sub {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Calculator Main Container */
+    .waaree-calc-section {
+      padding: 60px 0 100px;
+      background: #f9fafb;
+    }
+
+    .waaree-calc-box {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+
+    /* 3 Category Cards Header (Waaree-style) */
+    .category-selection-header {
+      padding: 36px 36px 20px;
+      background: #ffffff;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .category-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .category-title span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 50%;
+      font-size: 13px;
+    }
+
+    .category-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .cat-card {
+      border: 2px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .cat-card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+    }
+
+    .cat-card.active {
+      border-color: var(--w-primary);
+      background: #f0fdf4;
+      box-shadow: 0 6px 18px rgba(13, 176, 43, 0.12);
+    }
+
+    .cat-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 24px;
+      color: #374151;
+      transition: all 0.25s;
+    }
+
+    .cat-card.active .cat-card-icon {
+      background: var(--w-primary);
+      color: #ffffff;
+    }
+
+    .cat-card h4 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .cat-card p {
+      font-size: 12px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .cat-check {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--w-primary);
+      color: white;
+      font-size: 11px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cat-card.active .cat-check {
+      display: flex;
+    }
+
+    /* Calculator Main Body: Form + Results */
+    .calc-body-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      min-height: 540px;
+    }
+
+    /* Form Column */
+    .calc-form-pane {
+      padding: 36px;
+      background: #ffffff;
+      border-right: 1px solid #f3f4f6;
+    }
+
+    .input-row {
+      margin-bottom: 26px;
+    }
+
+    .input-label-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .input-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .input-val-badge {
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #111827;
+      font-feature-settings: "tnum";
+    }
+
+    .waaree-select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #111827;
+      background: #ffffff;
+      outline: none;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .waaree-select:focus {
+      border-color: var(--w-primary);
+      box-shadow: 0 0 0 3px rgba(13, 176, 43, 0.15);
+    }
+
+    /* Range slider styled like Waaree Green */
+    .waaree-range {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #e5e7eb;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .waaree-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--w-primary);
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .waaree-range::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .range-sub-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #9ca3af;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    .rate-indicator-box {
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .rate-indicator-box strong {
+      color: #111827;
+      font-weight: 800;
+    }
+
+    /* Results Column (Waaree Green & White Dashboard) */
+    .calc-results-pane {
+      padding: 36px;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .results-main-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    .results-main-tag {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--w-primary);
+      margin-bottom: 6px;
+    }
+
+    .results-capacity-val {
+      font-size: 42px;
+      font-weight: 900;
+      color: #111827;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .results-capacity-val span {
+      font-size: 24px;
+      font-weight: 700;
+      color: #6b7280;
+    }
+
+    .results-main-sub {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* Waaree Metrics Grid */
+    .waaree-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .w-metric-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.2s;
+    }
+
+    .w-metric-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .w-metric-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .w-metric-val {
+      font-size: 20px;
+      font-weight: 900;
+      color: #111827;
+      letter-spacing: -0.5px;
+    }
+
+    .w-metric-val.green {
+      color: var(--w-primary);
+    }
+
+    .w-metric-val.sun {
+      color: var(--w-sun);
+    }
+
+    .w-metric-note {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    /* Waaree CTA Buttons */
+    .w-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .w-btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--w-primary);
+      color: #ffffff;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 15px rgba(13, 176, 43, 0.3);
+    }
+
+    .w-btn-primary:hover {
+      background: var(--w-primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .w-btn-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1.5px solid #d1d5db;
+      color: #1f2937;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .w-btn-secondary:hover {
+      border-color: #111827;
+      color: #111827;
+    }
+
+    /* Lower Section: How Calculation Works */
+    .waaree-details-section {
+      max-width: 1180px;
+      margin: 60px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .detail-feature-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .detail-feature-card i {
+      font-size: 26px;
+      color: var(--w-primary);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .detail-feature-card h4 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .detail-feature-card p {
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .category-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .calc-body-layout {
+        grid-template-columns: 1fr;
+      }
+      .calc-form-pane {
+        border-right: none;
+        border-bottom: 1px solid #f3f4f6;
+        padding: 24px;
+      }
+      .calc-results-pane {
+        padding: 24px;
+      }
+      .waaree-details-section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ══ TOPBAR ══ -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i>+91 94375 27857</span>
+        <span><i class="fas fa-envelope"></i>enquiry@daypower.in</span>
+      </div>
+      <div class="topbar-right">
+        <span><i class="fas fa-map-marker-alt"></i>India | Pan-India Operations</span>
+        <a href="https://wa.me/919437527857?text=Hello%2C%20I%20want%20a%20free%20solar%20consultation!"
+          target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="Day Power Logo" class="logo-img">
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li>
+          <a href="index.html#services">Services <i class="fas fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="index.html#srv-construction"><i class="fas fa-hard-hat"></i>Solar EPC</a>
+            <a href="index.html#srv-rooftop"><i class="fas fa-solar-panel"></i>Rooftop & Ground-Mounted Solar</a>
+            <a href="index.html#srv-om"><i class="fas fa-tools"></i>O&M Services</a>
+            <a href="index.html#srv-consultancy"><i class="fas fa-lightbulb"></i>Consultancy</a>
+            <a href="index.html#srv-lighting"><i class="fas fa-bolt"></i>Virtual Net Metering </a>
+            <a href="index.html#srv-battery"><i class="fas fa-battery-full"></i>Group Net Metering</a>
+          </div>
+        </li>
+        <li><a href="products.html">Project Gallery</a></li>
+        <li><a href="calculator.html" class="active">Savings Calculator</a></li>
+        <li><a href="subsidy.html">Govt Subsidy</a></li>
+        <li><a href="index.html#why">Why Us</a></li>
+        <li><a href="index.html#contact" class="nav-cta-btn">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="waaree-hero">
+    <div class="container">
+      <div class="waaree-breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>Solar Saving Calculator</span>
+      </div>
+      <h1 class="waaree-hero-title">Solar <span>Saving Calculator</span></h1>
+      <p class="waaree-hero-sub">Estimate your required solar plant capacity, number of panels, upfront cost, and 25-year financial savings based on your state and consumption.</p>
+    </div>
+  </section>
+
+  <!-- ══ CALCULATOR SECTION ══ -->
+  <section class="waaree-calc-section">
+    <div class="container">
+      <div class="waaree-calc-box">
+        
+        <!-- Step 1: Select where you want to install Solar -->
+        <div class="category-selection-header">
+          <div class="category-title">
+            <span>1</span> Select Where You Want to Install Solar
+          </div>
+          <div class="category-cards-grid">
+            <!-- Residential -->
+            <div class="cat-card active" data-type="residential" onclick="selectWaareeCategory('residential')">
+              <div class="cat-check"><i class="fas fa-check"></i></div>
+              <div class="cat-card-icon"><i class="fas fa-house-chimney"></i></div>
+              <h4>Residential</h4>
+              <p>Home Rooftop (1 kWp - 10 kWp)</p>
+            </div>
+
+            <!-- Commercial -->
+            <div class="cat-card" data-type="commercial" onclick="selectWaareeCategory('commercial')">
+              <div class="cat-check"><i class="fas fa-check"></i></div>
+              <div class="cat-card-icon"><i class="fas fa-building"></i></div>
+              <h4>Commercial</h4>
+              <p>Offices, Hospitals & Schools</p>
+            </div>
+
+            <!-- Industrial -->
+            <div class="cat-card" data-type="industrial" onclick="selectWaareeCategory('industrial')">
+              <div class="cat-check"><i class="fas fa-check"></i></div>
+              <div class="cat-card-icon"><i class="fas fa-industry"></i></div>
+              <h4>Industrial</h4>
+              <p>Factories & Warehouses (50 kWp+)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Form & Results Layout -->
+        <div class="calc-body-layout">
+          
+          <!-- Input Form Column -->
+          <div class="calc-form-pane">
+            
+            <!-- State / Solar Radiation -->
+            <div class="input-row">
+              <div class="input-label-wrap">
+                <label class="input-label" for="state-select"><i class="fas fa-location-dot"></i> Select Your State</label>
+              </div>
+              <select id="state-select" class="waaree-select" onchange="recalculateWaaree()">
+                <option value="5.2" selected>Odisha (5.2 kWh/m²/day)</option>
+                <option value="5.8">Gujarat (5.8 kWh/m²/day)</option>
+                <option value="5.8">Rajasthan (5.8 kWh/m²/day)</option>
+                <option value="5.5">Maharashtra (5.5 kWh/m²/day)</option>
+                <option value="5.6">Madhya Pradesh (5.6 kWh/m²/day)</option>
+                <option value="5.7">Andhra Pradesh (5.7 kWh/m²/day)</option>
+                <option value="5.8">Karnataka (5.8 kWh/m²/day)</option>
+                <option value="5.6">Tamil Nadu (5.6 kWh/m²/day)</option>
+                <option value="5.5">NCT of Delhi (5.5 kWh/m²/day)</option>
+                <option value="5.3">Uttar Pradesh (5.3 kWh/m²/day)</option>
+                <option value="5.2">Punjab (5.2 kWh/m²/day)</option>
+                <option value="5.4">Haryana (5.4 kWh/m²/day)</option>
+                <option value="4.9">West Bengal (4.9 kWh/m²/day)</option>
+                <option value="5.0">Jharkhand (5.0 kWh/m²/day)</option>
+                <option value="5.4">Chhattisgarh (5.4 kWh/m²/day)</option>
+                <option value="5.2">Bihar (5.2 kWh/m²/day)</option>
+              </select>
+            </div>
+
+            <!-- Monthly Electricity Bill -->
+            <div class="input-row">
+              <div class="input-label-wrap">
+                <label class="input-label" for="w-bill-slider"><i class="fas fa-wallet"></i> Monthly Electricity Bill</label>
+                <span class="input-val-badge" id="w-bill-badge">₹6,000</span>
+              </div>
+              <input type="range" class="waaree-range" id="w-bill-slider" min="1500" max="25000" step="500" value="6000" oninput="recalculateWaaree()">
+              <div class="range-sub-text">
+                <span id="w-bill-min">₹1,500</span>
+                <span id="w-bill-max">₹25,000</span>
+              </div>
+            </div>
+
+            <!-- Roof Area Available (sq. ft) -->
+            <div class="input-row">
+              <div class="input-label-wrap">
+                <label class="input-label" for="w-area-slider"><i class="fas fa-vector-square"></i> Available Shade-Free Area</label>
+                <span class="input-val-badge" id="w-area-badge">500 sq.ft</span>
+              </div>
+              <input type="range" class="waaree-range" id="w-area-slider" min="100" max="3000" step="50" value="500" oninput="recalculateWaaree()">
+              <div class="range-sub-text">
+                <span id="w-area-min">100 sq.ft</span>
+                <span id="w-area-max">3,000 sq.ft</span>
+              </div>
+            </div>
+
+            <!-- Tariff Note -->
+            <div class="rate-indicator-box">
+              <span>Estimated Grid Electricity Tariff:</span>
+              <strong id="w-tariff-text">₹7.0 / Unit (kWh)</strong>
+            </div>
+
+          </div>
+
+          <!-- Output Dashboard Column (Waaree Results Card) -->
+          <div class="calc-results-pane">
+            <div>
+              <!-- Main System Size Card -->
+              <div class="results-main-card">
+                <div class="results-main-tag">Recommended Solar Plant</div>
+                <div class="results-capacity-val" id="w-res-capacity">3 <span>kWp</span></div>
+                <div class="results-main-sub" id="w-res-panels">Requires ~6 Bifacial Solar Panels (550Wp)</div>
+              </div>
+
+              <!-- Waaree Style Metrics Grid -->
+              <div class="waaree-metrics-grid">
+                <!-- Monthly Generation -->
+                <div class="w-metric-card">
+                  <div class="w-metric-label">Monthly Generation</div>
+                  <div class="w-metric-val" id="w-res-gen">360 Units</div>
+                  <div class="w-metric-note">~12 units per day</div>
+                </div>
+
+                <!-- Monthly Bill Savings -->
+                <div class="w-metric-card">
+                  <div class="w-metric-label">Monthly Savings</div>
+                  <div class="w-metric-val green" id="w-res-monthly-save">₹2,520</div>
+                  <div class="w-metric-note">Direct power offset</div>
+                </div>
+
+                <!-- Estimated Upfront Cost -->
+                <div class="w-metric-card">
+                  <div class="w-metric-label">Estimated System Cost</div>
+                  <div class="w-metric-val" id="w-res-cost">₹1.80 Lakh</div>
+                  <div class="w-metric-note" id="w-res-subsidy-note">₹78,000 PM Surya Ghar Subsidy</div>
+                </div>
+
+                <!-- 25 Year Total Savings -->
+                <div class="w-metric-card">
+                  <div class="w-metric-label">25-Year Total Savings</div>
+                  <div class="w-metric-val sun" id="w-res-life-save">₹9.5 Lakh</div>
+                  <div class="w-metric-note">Lifetime generation</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="w-cta-group">
+              <a href="#" id="w-wa-cta" target="_blank" class="w-btn-primary">
+                <i class="fab fa-whatsapp"></i> Get Instant Customized Quote
+              </a>
+              <a href="tel:+919437527857" class="w-btn-secondary">
+                <i class="fas fa-phone-alt"></i> Speak to Solar Engineer: +91 94375 27857
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- 3 Key Features Row (Waaree Style) -->
+      <div class="waaree-details-section">
+        <div class="detail-feature-card">
+          <i class="fas fa-sun"></i>
+          <h4>How Accurate is this Calculator?</h4>
+          <p>Calculations use localized NASA & MNRE solar irradiance data for your state and assume Tier-1 mono-PERC / TopCon module yields with 80% Performance Ratio (PR).</p>
+        </div>
+        <div class="detail-feature-card">
+          <i class="fas fa-shield-alt"></i>
+          <h4>25 Years Linear Performance</h4>
+          <p>Daypower delivers EPC projects with Tier-1 bifacial panels offering 12-year product warranty and 25-year 84.8% power output guarantee.</p>
+        </div>
+        <div class="detail-feature-card">
+          <i class="fas fa-coins"></i>
+          <h4>Government Subsidy Benefit</h4>
+          <p>Residential setups are eligible for up to ₹78,000 DBT cash subsidy directly into your bank account under the PM Surya Ghar: Muft Bijli Yojana.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+            <img src="logo.png" alt="Day Power Logo" style="height:36px;width:auto;">
+          </div>
+          <p>Turning sunlight into opportunity with trusted solar EPC solutions across India. Your partner in clean energy transition.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919437527857" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="itss_karan_2005"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#srv-rooftop">Rooftop Solar</a></li>
+            <li><a href="index.html#srv-construction">EPC Construction</a></li>
+            <li><a href="index.html#srv-om">O&M Services</a></li>
+            <li><a href="index.html#srv-consultancy">Consultancy</a></li>
+            <li><a href="index.html#srv-battery">Battery Storage</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="products.html">Project Gallery</a></li>
+            <li><a href="calculator.html">Savings Calculator</a></li>
+            <li><a href="subsidy.html">Govt Subsidy</a></li>
+            <li><a href="index.html#why">Why Choose Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+919437527857"><i class="fas fa-phone" style="color:var(--sun);margin-right:7px;font-size:11px;"></i>+91 94375 27857</a></li>
+            <li><a href="mailto:enquiry@daypower.in"><i class="fas fa-envelope" style="color:var(--sun);margin-right:7px;font-size:11px;"></i>enquiry@daypower.in</a></li>
+            <li><a href="https://wa.me/919437527857" target="_blank"><i class="fab fa-whatsapp" style="color:#25d366;margin-right:7px;font-size:12px;"></i>WhatsApp Us</a></li>
+          </ul>
+          <div style="margin-top:20px;">
+            <a href="https://wa.me/919437527857?text=Hi%2C%20I%20need%20solar%20consultation!" target="_blank"
+              class="btn btn-green" style="font-size:13px;padding:10px 18px;border-radius:10px;">
+              <i class="fab fa-whatsapp"></i>Quick Chat
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Daypower LLP. All rights reserved.</span>
+        <span>Made with ☀️ for a greener India</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ WHATSAPP FLOAT BUTTON ══ -->
+  <div id="wa-float">
+    <div class="wa-bubble">💬 Chat with us on WhatsApp!</div>
+    <a href="https://wa.me/919437527857?text=Hello%2C%20I%27m%20interested%20in%20solar%20solutions!" target="_blank"
+      class="wa-btn" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // ══════════════════════════════════════════════
+    // WAAREE-ALIGNED CALCULATION ENGINE
+    // ══════════════════════════════════════════════
+    let currentCategory = 'residential';
+
+    function selectWaareeCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-card').forEach(card => {
+        card.classList.toggle('active', card.dataset.type === cat);
+      });
+
+      const billSlider = document.getElementById('w-bill-slider');
+      const areaSlider = document.getElementById('w-area-slider');
+      const billMin = document.getElementById('w-bill-min');
+      const billMax = document.getElementById('w-bill-max');
+      const areaMin = document.getElementById('w-area-min');
+      const areaMax = document.getElementById('w-area-max');
+      const tariffText = document.getElementById('w-tariff-text');
+
+      if (cat === 'residential') {
+        billSlider.min = '1500';
+        billSlider.max = '25000';
+        billSlider.step = '500';
+        billSlider.value = '6000';
+        billMin.innerText = '₹1,500';
+        billMax.innerText = '₹25,000';
+
+        areaSlider.min = '100';
+        areaSlider.max = '3000';
+        areaSlider.step = '50';
+        areaSlider.value = '500';
+        areaMin.innerText = '100 sq.ft';
+        areaMax.innerText = '3,000 sq.ft';
+
+        tariffText.innerText = '₹7.0 / Unit (Avg Residential)';
+      } else if (cat === 'commercial') {
+        billSlider.min = '15000';
+        billSlider.max = '150000';
+        billSlider.step = '2000';
+        billSlider.value = '45000';
+        billMin.innerText = '₹15,000';
+        billMax.innerText = '₹1.5 Lakh';
+
+        areaSlider.min = '800';
+        areaSlider.max = '15000';
+        areaSlider.step = '200';
+        areaSlider.value = '3500';
+        areaMin.innerText = '800 sq.ft';
+        areaMax.innerText = '15,000 sq.ft';
+
+        tariffText.innerText = '₹9.0 / Unit (Avg Commercial)';
+      } else { // industrial
+        billSlider.min = '100000';
+        billSlider.max = '1500000';
+        billSlider.step = '10000';
+        billSlider.value = '300000';
+        billMin.innerText = '₹1.0 Lakh';
+        billMax.innerText = '₹15 Lakh+';
+
+        areaSlider.min = '5000';
+        areaSlider.max = '80000';
+        areaSlider.step = '1000';
+        areaSlider.value = '25000';
+        areaMin.innerText = '5,000 sq.ft';
+        areaMax.innerText = '80,000 sq.ft';
+
+        tariffText.innerText = '₹8.5 / Unit (Industrial HT / LT)';
+      }
+
+      recalculateWaaree();
+    }
+
+    function recalculateWaaree() {
+      const stateSelect = document.getElementById('state-select');
+      const billSlider = document.getElementById('w-bill-slider');
+      const areaSlider = document.getElementById('w-area-slider');
+
+      const billBadge = document.getElementById('w-bill-badge');
+      const areaBadge = document.getElementById('w-area-badge');
+
+      const bill = parseFloat(billSlider.value);
+      const area = parseFloat(areaSlider.value);
+      const irradiance = parseFloat(stateSelect.value) || 5.2;
+
+      billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+      areaBadge.innerText = area.toLocaleString('en-IN') + ' sq.ft';
+
+      // Waaree formula parameters
+      // Tariff
+      let tariff = 7.0;
+      if (currentCategory === 'commercial') tariff = 9.0;
+      if (currentCategory === 'industrial') tariff = 8.5;
+
+      // Monthly units consumed = Monthly Bill / Tariff
+      const unitsConsumed = bill / tariff;
+      // Daily units consumed
+      const dailyUnits = unitsConsumed / 30;
+
+      // Required Solar Capacity (kW) based on Daily Units / Irradiance (hours)
+      let capacityFromBill = dailyUnits / (irradiance * 0.8); // 80% PR
+      
+      // Capacity constrained by roof area (1 kW requires approx 80-100 sq.ft)
+      const capacityFromArea = area / 85;
+
+      let finalCapacity = Math.min(capacityFromBill, capacityFromArea);
+      if (finalCapacity < 1) finalCapacity = 1;
+      finalCapacity = Math.round(finalCapacity * 10) / 10;
+
+      // Number of 550W panels
+      const panelsCount = Math.ceil((finalCapacity * 1000) / 550);
+
+      // Monthly Solar Generation = Capacity * 120 (approx kWh/month per kW in India)
+      const monthlyGen = Math.round(finalCapacity * irradiance * 30 * 0.78);
+
+      // Monthly Savings
+      const monthlySavings = Math.round(Math.min(monthlyGen, unitsConsumed) * tariff);
+
+      // System Upfront Cost:
+      // Approx ₹52,000/kW for residential, ₹42,000/kW for commercial, ₹38,000/kW for industrial
+      let costPerKW = 52000;
+      if (currentCategory === 'commercial') costPerKW = 42000;
+      if (currentCategory === 'industrial') costPerKW = 38000;
+      const totalCost = Math.round(finalCapacity * costPerKW);
+
+      // Lifetime savings (25 yrs)
+      const lifetimeSavings = Math.round(monthlySavings * 12 * 25 * 1.12);
+
+      // Display formatting
+      document.getElementById('w-res-capacity').innerHTML = `${finalCapacity} <span>kWp</span>`;
+      document.getElementById('w-res-panels').innerText = `Requires ~${panelsCount} Bifacial TopCon Panels (550W)`;
+      document.getElementById('w-res-gen').innerText = `${monthlyGen.toLocaleString('en-IN')} Units`;
+      document.getElementById('w-res-monthly-save').innerText = '₹' + monthlySavings.toLocaleString('en-IN');
+
+      let costStr = '';
+      if (totalCost >= 10000000) {
+        costStr = '₹' + (totalCost / 10000000).toFixed(2) + ' Cr';
+      } else {
+        costStr = '₹' + (totalCost / 100000).toFixed(2) + ' Lakh';
+      }
+      document.getElementById('w-res-cost').innerText = costStr;
+
+      let lifeStr = '';
+      if (lifetimeSavings >= 10000000) {
+        lifeStr = '₹' + (lifetimeSavings / 10000000).toFixed(2) + ' Cr';
+      } else {
+        lifeStr = '₹' + (lifetimeSavings / 100000).toFixed(2) + ' Lakh';
+      }
+      document.getElementById('w-res-life-save').innerText = lifeStr;
+
+      // Subsidy note update
+      const subsidyNote = document.getElementById('w-res-subsidy-note');
+      if (currentCategory === 'residential') {
+        const subAmount = finalCapacity >= 3 ? '₹78,000' : (finalCapacity >= 2 ? '₹60,000' : '₹30,000');
+        subsidyNote.innerText = `${subAmount} PM Surya Ghar Subsidy`;
+      } else {
+        subsidyNote.innerText = 'Eligible for 80% Tax Depreciation';
+      }
+
+      // WhatsApp CTA link
+      const waBtn = document.getElementById('w-wa-cta');
+      const text = encodeURIComponent(
+        `Hello Daypower! ☀️\nI checked your Solar Saving Calculator:\n` +
+        `• Type: ${currentCategory.toUpperCase()}\n` +
+        `• State: ${stateSelect.options[stateSelect.selectedIndex].text}\n` +
+        `• Monthly Bill: ₹${bill.toLocaleString('en-IN')}\n` +
+        `• Roof Area: ${area} sq.ft\n` +
+        `• Calculated Capacity: ${finalCapacity} kWp (~${panelsCount} panels)\n` +
+        `• Estimated Monthly Savings: ₹${monthlySavings.toLocaleString('en-IN')}\n\n` +
+        `Please share an official quote and feasibility assessment.`
+      );
+      waBtn.href = `https://wa.me/919437527857?text=${text}`;
+    }
+
+    // Run on load
+    document.addEventListener('DOMContentLoaded', () => {
+      recalculateWaaree();
+    });
+  </script>
+</body>
+
+</html>
