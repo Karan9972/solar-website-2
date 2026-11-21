@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Leadership & Team | Daypower LLP</title>
+  <meta name="description"
+    content="Meet the founders and leadership team behind Daypower LLP — delivering reliable commercial, industrial, and residential solar EPC solutions across India." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════════════
+       ABOUT US PAGE STYLES
+    ══════════════════════════════════════════════ */
+    #about-hero {
+      padding: 130px 0 60px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2d40 100%);
+      text-align: center;
+      color: white;
+    }
+
+    .about-breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .about-breadcrumb a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+    }
+
+    .about-breadcrumb a:hover {
+      color: var(--sun);
+    }
+
+    .about-hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .about-hero-title span {
+      color: var(--sun);
+    }
+
+    .about-hero-sub {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Company Overview Section */
+    .company-overview-section {
+      padding: 80px 0 50px;
+      background: #ffffff;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .overview-left h2 {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+
+    .overview-left p {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .company-stats-pill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .stat-pill-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+
+    .stat-pill-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--sun-dark);
+      margin-bottom: 4px;
+    }
+
+    .stat-pill-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .overview-right-card {
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 24px;
+      padding: 40px 32px;
+      color: white;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+    }
+
+    .overview-right-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--sun);
+    }
+
+    .overview-right-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .overview-features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .overview-features-list li {
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #e2e8f0;
+    }
+
+    .overview-features-list li i {
+      color: #10b981;
+      font-size: 16px;
+    }
+
+    /* Leadership Section */
+    .leadership-section {
+      padding: 80px 0 100px;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .section-header-center {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 50px;
+    }
+
+    .section-header-center .tag {
+      margin-bottom: 10px;
+    }
+
+    .section-header-center h2 {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-header-center p {
+      font-size: 16px;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    .leaders-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .leader-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+
+    .leader-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.09);
+      border-color: #cbd5e1;
+    }
+
+    .leader-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.25));
+      color: var(--sun-dark);
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-weight: 900;
+    }
+
+    .leader-exp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      align-self: flex-start;
+    }
+
+    .leader-name {
+      font-size: 21px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+
+    .leader-role {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--sun-dark);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .leader-bio {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.65;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .leader-contact-box {
+      border-top: 1px dashed #e2e8f0;
+      padding-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .leader-contact-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .leader-contact-link i {
+      color: var(--sun);
+      width: 16px;
+      font-size: 13px;
+    }
+
+    .leader-contact-link:hover {
+      color: var(--sun-dark);
+    }
+
+    /* Core Values */
+    .values-section {
+      padding: 70px 0;
+      background: #ffffff;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .value-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 26px 22px;
+      text-align: center;
+    }
+
+    .value-box i {
+      font-size: 28px;
+      color: var(--sun);
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+
+    .value-box h4 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .value-box p {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (max-width: 992px) {
+      .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .leaders-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ══ TOPBAR ══ -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone"></i>+91 94375 27857</span>
+        <span><i class="fas fa-envelope"></i>enquiry@daypower.in</span>
+      </div>
+      <div class="topbar-right">
+        <span><i class="fas fa-map-marker-alt"></i>India | Pan-India Operations</span>
+        <a href="https://wa.me/919437527857?text=Hello%2C%20I%20want%20a%20free%20solar%20consultation!"
+          target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="Day Power Logo" class="logo-img">
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li>
+          <a href="index.html#services">Services <i class="fas fa-chevron-down chevron"></i></a>
+          <div class="dropdown">
+            <a href="index.html#srv-construction"><i class="fas fa-hard-hat"></i>Solar EPC</a>
+            <a href="index.html#srv-rooftop"><i class="fas fa-solar-panel"></i>Rooftop & Ground-Mounted Solar</a>
+            <a href="index.html#srv-om"><i class="fas fa-tools"></i>O&M Services</a>
+            <a href="index.html#srv-consultancy"><i class="fas fa-lightbulb"></i>Consultancy</a>
+            <a href="index.html#srv-lighting"><i class="fas fa-bolt"></i>Virtual Net Metering </a>
+            <a href="index.html#srv-battery"><i class="fas fa-battery-full"></i>Group Net Metering</a>
+          </div>
+        </li>
+        <li><a href="products.html">Project Gallery</a></li>
+        <li><a href="calculator.html">Savings Calculator</a></li>
+        <li><a href="subsidy.html">Govt Subsidy</a></li>
+        <li><a href="index.html#why">Why Us</a></li>
+        <li><a href="index.html#contact" class="nav-cta-btn">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="about-hero">
+    <div class="container">
+      <div class="about-breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>About Us</span>
+      </div>
+      <h1 class="about-hero-title">About <span>Daypower LLP</span></h1>
+      <p class="about-hero-sub">Leading the clean energy revolution with high-efficiency solar EPC engineering, experienced leadership, and end-to-end turnkey delivery across India.</p>
+    </div>
+  </section>
+
+  <!-- ══ COMPANY OVERVIEW ══ -->
+  <section class="company-overview-section">
+    <div class="container">
+      <div class="overview-grid">
+        <div class="overview-left">
+          <div class="tag">☀ Our Mission & Vision</div>
+          <h2>Powering India’s Sustainable Future Through Precision Engineering</h2>
+          <p>Daypower LLP is a premier Solar EPC (Engineering, Procurement, and Construction) contractor headquartered in Bhubaneswar, Odisha. We specialize in designing, building, and operating high-performance commercial, industrial, and residential solar power plants.</p>
+          <p>From initial feasibility studies and 3D shadow analysis to electrical safety clearances (CEIG), DISCOM net metering, and lifetime operations & maintenance (O&M), Daypower provides turnkey clean energy infrastructure that delivers guaranteed long-term returns.</p>
+          
+          <div class="company-stats-pill-grid">
+            <div class="stat-pill-box">
+              <div class="stat-pill-num">300+</div>
+              <div class="stat-pill-label">Projects Completed</div>
+            </div>
+            <div class="stat-pill-box">
+              <div class="stat-pill-num">12+</div>
+              <div class="stat-pill-label">Years Experience</div>
+            </div>
+            <div class="stat-pill-box">
+              <div class="stat-pill-num">100%</div>
+              <div class="stat-pill-label">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-right-card">
+          <h3>The Daypower Advantage</h3>
+          <p>We deploy Tier-1 bifacial TopCon solar modules and smart string inverters to maximize electricity generation even in diffuse and high-temperature environments.</p>
+          <ul class="overview-features-list">
+            <li><i class="fas fa-check-circle"></i> Complete DISCOM liaisoning & Net Metering approval</li>
+            <li><i class="fas fa-check-circle"></i> Up to 80% Accelerated Tax Depreciation in Year 1</li>
+            <li><i class="fas fa-check-circle"></i> Direct DBT subsidy processing under PM Surya Ghar</li>
+            <li><i class="fas fa-check-circle"></i> 25-Year Linear Performance Warranty</li>
+            <li><i class="fas fa-check-circle"></i> Round-the-clock remote generation monitoring</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LEADERSHIP & FOUNDERS ══ -->
+  <section class="leadership-section">
+    <div class="container">
+      <div class="section-header-center">
+        <div class="tag">👥 Leadership</div>
+        <h2>Meet Our Founding Partners</h2>
+        <p>A seasoned team of engineers, financial experts, and project managers driving operational excellence and regulatory compliance at Daypower.</p>
+      </div>
+
+      <div class="leaders-grid">
+        <!-- Leader 1 -->
+        <div class="leader-card">
+          <div>
+            <div class="leader-avatar">KN</div>
+            <div class="leader-exp-badge"><i class="fas fa-briefcase"></i> 11+ Years Experience</div>
+            <h3 class="leader-name">Khirod Kumar Nayak</h3>
+            <div class="leader-role">Co-Founder &amp; Managing Partner<br>(Sales, Business Development &amp; Operations)</div>
+            <p class="leader-bio">With over 11 years of industry experience in the solar sector, Khirod Kumar Nayak leads Sales, Business Development, and overall operational governance at Daypower. He oversees cross-departmental progress across the organization, driving business growth while ensuring smooth coordination and timely resolution of operational challenges.</p>
+          </div>
+          <div class="leader-contact-box">
+            <a href="tel:+919437527857" class="leader-contact-link">
+              <i class="fas fa-phone"></i> +91 94375 27857
+            </a>
+            <a href="mailto:khirod.nayak@daypower.in" class="leader-contact-link">
+              <i class="fas fa-envelope"></i> khirod.nayak@daypower.in
+            </a>
+          </div>
+        </div>
+
+        <!-- Leader 2 -->
+        <div class="leader-card">
+          <div>
+            <div class="leader-avatar">NS</div>
+            <div class="leader-exp-badge"><i class="fas fa-briefcase"></i> 10+ Years Experience</div>
+            <h3 class="leader-name">Nimain Chandan Sahu</h3>
+            <div class="leader-role">Co-Founder &amp; Partner<br>(Head of Procurement &amp; Accounts)</div>
+            <p class="leader-bio">Bringing over a decade of expertise in financial management and supply chain operations, Nimain Chandan Sahu serves as the nodal head for Procurement at Daypower. He manages vendor partnerships, strategic sourcing of quality solar components, and financial operations to ensure cost-efficiency and timely project delivery.</p>
+          </div>
+          <div class="leader-contact-box">
+            <a href="tel:+918984585010" class="leader-contact-link">
+              <i class="fas fa-phone"></i> +91 89845 85010
+            </a>
+            <a href="mailto:n.sahu@daypower.in" class="leader-contact-link">
+              <i class="fas fa-envelope"></i> n.sahu@daypower.in
+            </a>
+          </div>
+        </div>
+
+        <!-- Leader 3 -->
+        <div class="leader-card">
+          <div>
+            <div class="leader-avatar">BS</div>
+            <div class="leader-exp-badge"><i class="fas fa-briefcase"></i> 4+ Years Experience</div>
+            <h3 class="leader-name">Babin Kumar Sahoo</h3>
+            <div class="leader-role">Co-Founder &amp; Partner<br>(Project Execution &amp; Government Liaisoning)</div>
+            <p class="leader-bio">Babin Kumar Sahoo heads on-ground Project Execution and Net Metering operations at Daypower. With 4 years of specialized experience in government liaisoning and site management, he ensures seamless regulatory approvals, DISCOM coordination, and end-to-end commissioning for residential and commercial solar installations.</p>
+          </div>
+          <div class="leader-contact-box">
+            <a href="tel:+917008619897" class="leader-contact-link">
+              <i class="fas fa-phone"></i> +91 70086 19897
+            </a>
+            <a href="mailto:babin.sahoo@daypower.in" class="leader-contact-link">
+              <i class="fas fa-envelope"></i> babin.sahoo@daypower.in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CORE VALUES ══ -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header-center">
+        <div class="tag">⚡ What Drives Us</div>
+        <h2>Our Core Commitments</h2>
+        <p>Built upon the pillars of engineering integrity, safety, and customer satisfaction.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-box">
+          <i class="fas fa-award"></i>
+          <h4>Quality Without Compromise</h4>
+          <p>We source only Tier-1 ALMM-listed bifacial solar modules and smart inverters with international certifications.</p>
+        </div>
+        <div class="value-box">
+          <i class="fas fa-scale-balanced"></i>
+          <h4>100% Regulatory Compliance</h4>
+          <p>Our dedicated liaison team coordinates every CEIG inspection, grid synchronization, and net meter approval.</p>
+        </div>
+        <div class="value-box">
+          <i class="fas fa-handshake"></i>
+          <h4>Long-Term Partnership</h4>
+          <p>We don't just build and leave. Our comprehensive O&M contracts ensure your solar investment produces peak power for 25 years.</p>
+        </div>
+        <div class="value-box">
+          <i class="fas fa-leaf"></i>
+          <h4>Clean Energy Transition</h4>
+          <p>Committed to reducing India's carbon footprint and empowering enterprises to become energy independent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+            <img src="logo.png" alt="Day Power Logo" class="footer-logo-img">
+          </div>
+          <p>Turning sunlight into opportunity with trusted solar EPC solutions across India. Your partner in clean energy transition.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919437527857" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="itss_karan_2005"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#srv-rooftop">Rooftop Solar</a></li>
+            <li><a href="index.html#srv-construction">EPC Construction</a></li>
+            <li><a href="index.html#srv-om">O&M Services</a></li>
+            <li><a href="index.html#srv-consultancy">Consultancy</a></li>
+            <li><a href="index.html#srv-battery">Battery Storage</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Project Gallery</a></li>
+            <li><a href="calculator.html">Savings Calculator</a></li>
+            <li><a href="subsidy.html">Govt Subsidy</a></li>
+            <li><a href="index.html#why">Why Choose Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+919437527857"><i class="fas fa-phone" style="color:var(--sun);margin-right:7px;font-size:11px;"></i>+91 94375 27857</a></li>
+            <li><a href="mailto:enquiry@daypower.in"><i class="fas fa-envelope" style="color:var(--sun);margin-right:7px;font-size:11px;"></i>enquiry@daypower.in</a></li>
+            <li><a href="https://wa.me/919437527857" target="_blank"><i class="fab fa-whatsapp" style="color:#25d366;margin-right:7px;font-size:12px;"></i>WhatsApp Us</a></li>
+          </ul>
+          <div style="margin-top:20px;">
+            <a href="https://wa.me/919437527857?text=Hi%2C%20I%20need%20solar%20consultation!" target="_blank"
+              class="btn btn-green" style="font-size:13px;padding:10px 18px;border-radius:10px;">
+              <i class="fab fa-whatsapp"></i>Quick Chat
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Daypower LLP. All rights reserved.</span>
+        <span>Made with ☀️ for a greener India</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ WHATSAPP FLOAT BUTTON ══ -->
+  <div id="wa-float">
+    <div class="wa-bubble">💬 Chat with us on WhatsApp!</div>
+    <a href="https://wa.me/919437527857?text=Hello%2C%20I%27m%20interested%20in%20solar%20solutions!" target="_blank"
+      class="wa-btn" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
