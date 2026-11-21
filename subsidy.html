@@ -72,19 +72,23 @@
       line-height: 1.6;
     }
 
+    /* Subsidy Section & Card Container */
     .subsidy-main-section {
       padding: 60px 0 100px;
       background: var(--w-gray-bg);
+      overflow-x: hidden;
     }
 
     .subsidy-content-box {
       max-width: 1180px;
+      width: 100%;
       margin: 0 auto;
       background: #ffffff;
       border-radius: 20px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
       border: 1px solid var(--w-border);
       overflow: hidden;
+      box-sizing: border-box;
     }
 
     /* Sector Tab Selector (Waaree Category Style) */
@@ -92,6 +96,7 @@
       padding: 36px 36px 20px;
       background: #ffffff;
       border-bottom: 1px solid #f3f4f6;
+      box-sizing: border-box;
     }
 
     .subsidy-sec-title {
@@ -131,6 +136,7 @@
       background: #ffffff;
       transition: all 0.25s ease;
       position: relative;
+      box-sizing: border-box;
     }
 
     .sub-tab-card:hover {
@@ -200,6 +206,7 @@
       display: none;
       padding: 40px;
       animation: fadeIn 0.3s ease;
+      box-sizing: border-box;
     }
 
     .subsidy-tab-pane.active {
@@ -224,6 +231,12 @@
       grid-template-columns: 1.15fr 1fr;
       gap: 36px;
       align-items: start;
+      box-sizing: border-box;
+    }
+
+    .scheme-info-col {
+      min-width: 0;
+      box-sizing: border-box;
     }
 
     .scheme-info-col h3 {
@@ -231,6 +244,7 @@
       font-weight: 900;
       color: #111827;
       margin-bottom: 12px;
+      word-break: break-word;
     }
 
     .scheme-tagline {
@@ -238,22 +252,31 @@
       color: #4b5563;
       margin-bottom: 24px;
       line-height: 1.6;
+      word-break: break-word;
     }
 
-    /* Financial Breakdown Table */
+    /* Financial Breakdown Table Card Container */
+    .subsidy-table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 24px;
+      border: 1px solid var(--w-border);
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+
     .subsidy-table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      border: 1px solid var(--w-border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 28px;
+      border-collapse: collapse;
+      margin: 0;
+      font-size: 14px;
     }
 
     .subsidy-table th {
-      background: #f9fafb;
-      padding: 14px 18px;
+      background: #f8fafc;
+      padding: 14px 16px;
       font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
@@ -261,13 +284,15 @@
       color: #374151;
       text-align: left;
       border-bottom: 1px solid var(--w-border);
+      white-space: nowrap;
     }
 
     .subsidy-table td {
-      padding: 14px 18px;
-      font-size: 14px;
+      padding: 14px 16px;
+      font-size: 13.5px;
       color: #1f2937;
-      border-bottom: 1px solid #f3f4f6;
+      border-bottom: 1px solid #f1f5f9;
+      line-height: 1.45;
     }
 
     .subsidy-table tr:last-child td {
@@ -286,6 +311,7 @@
       flex-direction: column;
       gap: 12px;
       margin-bottom: 30px;
+      padding: 0;
     }
 
     .key-points-list li {
@@ -294,13 +320,14 @@
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .key-points-list li i {
       color: var(--w-primary);
       font-size: 16px;
       margin-top: 3px;
+      flex-shrink: 0;
     }
 
     /* Right Action Card (Waaree-style Quote Card) */
@@ -308,7 +335,10 @@
       background: #f8fafc;
       border: 1.5px solid #e2e8f0;
       border-radius: 18px;
-      padding: 32px;
+      padding: 32px 28px;
+      box-sizing: border-box;
+      min-width: 0;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
     }
 
     .action-card-header {
@@ -529,80 +559,180 @@
     }
 
     @media (max-width: 900px) {
-      .subsidy-tabs-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+      .subsidy-main-section {
+        padding: 30px 10px 60px;
+      }
+
+      .subsidy-content-box {
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       }
 
       .subsidy-tabs-wrapper {
-        padding: 24px 18px 16px;
+        padding: 20px 14px 14px;
+      }
+
+      .subsidy-sec-title {
+        font-size: 16px;
+        margin-bottom: 14px;
+      }
+
+      .subsidy-tabs-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .sub-tab-card {
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-align: left;
+      }
+
+      .sub-tab-icon {
+        margin: 0;
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .sub-tab-card h4 {
+        font-size: 15px;
+        margin-bottom: 2px;
+      }
+
+      .sub-tab-card p {
+        font-size: 11.5px;
       }
 
       .subsidy-detail-layout {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 24px;
       }
 
       .subsidy-tab-pane {
-        padding: 20px 16px;
+        padding: 20px 14px;
       }
 
       .scheme-info-col h3 {
-        font-size: 22px;
+        font-size: 21px;
         line-height: 1.3;
+        margin-bottom: 10px;
       }
 
       .scheme-tagline {
-        font-size: 14px;
+        font-size: 13.5px;
         line-height: 1.6;
         margin-bottom: 18px;
       }
 
-      /* Make table scrollable and clean on mobile */
+      /* Clean self-contained Card Box for the Table on mobile */
       .subsidy-table-responsive {
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        margin-bottom: 24px;
+        margin-bottom: 22px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #ffffff;
       }
 
       .subsidy-table {
-        min-width: 380px;
-        font-size: 13px;
+        min-width: 100%;
+        font-size: 12.5px;
       }
 
-      .subsidy-table th, 
-      .subsidy-table td {
+      .subsidy-table th {
         padding: 10px 12px;
+        font-size: 11px;
+        white-space: normal;
+        word-break: normal;
+      }
+
+      .subsidy-table td {
+        padding: 11px 12px;
         font-size: 12.5px;
         line-height: 1.4;
       }
 
-      .key-points-list li {
-        font-size: 13.5px;
-        line-height: 1.6;
+      .key-points-list {
+        gap: 10px;
+        margin-bottom: 24px;
       }
 
+      .key-points-list li {
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      /* Clean Action Card Box */
       .subsidy-action-card {
-        padding: 22px 18px;
+        padding: 22px 16px;
+        border-radius: 16px;
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+      }
+
+      .action-card-header {
+        margin-bottom: 18px;
+        padding-bottom: 16px;
       }
 
       .action-card-title {
-        font-size: 20px;
+        font-size: 19px;
+        line-height: 1.3;
+      }
+
+      .action-card-desc {
+        font-size: 12.5px;
+      }
+
+      .checklist-mini {
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+
+      .check-item {
+        font-size: 12.5px;
+      }
+
+      .w-btn-primary {
+        padding: 14px;
+        font-size: 14px;
+      }
+
+      .w-btn-secondary {
+        padding: 12px;
+        font-size: 12.5px;
       }
 
       .subsidy-process-wrap {
-        padding: 28px 18px;
-        margin-top: 40px;
+        padding: 24px 16px;
+        margin-top: 36px;
+        border-radius: 16px;
       }
 
       .process-heading-center h3 {
-        font-size: 20px;
+        font-size: 19px;
+        line-height: 1.3;
+      }
+
+      .process-heading-center p {
+        font-size: 13px;
       }
 
       .process-timeline-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
+      }
+
+      .step-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        margin-bottom: 10px;
       }
 
       .waaree-faq-wrap {
@@ -614,16 +744,17 @@
       }
 
       .faq-row {
-        padding: 16px 18px;
+        padding: 16px 14px;
+        border-radius: 10px;
       }
 
       .faq-row h4 {
-        font-size: 14.5px;
+        font-size: 14px;
         line-height: 1.4;
       }
 
       .faq-row p {
-        font-size: 13px;
+        font-size: 12.5px;
         line-height: 1.6;
       }
     }
