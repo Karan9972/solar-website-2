@@ -6,32 +6,32 @@ window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', scro
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', (e) => {
-    const dropdown = a.nextElementSibling;
-    // If we click a link that has a dropdown menu
-    if (dropdown && dropdown.classList.contains('dropdown')) {
-      // On mobile viewports, toggle the accordion and prevent following the anchor hash immediately
-      if (window.innerWidth <= 900) {
-        e.preventDefault();
-        a.parentElement.classList.toggle('dropdown-active');
-        return; // Stop here, do not close the entire nav menu!
-      }
-    }
-    
-    // For all other regular link clicks, or if we are on desktop, close the menu completely
-    hamburger.classList.remove('open');
-    navLinks.classList.remove('open');
-    
-    // Reset any accordion states for a clean open next time
-    document.querySelectorAll('.dropdown-active').forEach(li => li.classList.remove('dropdown-active'));
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
   });
-});
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const dropdown = a.nextElementSibling;
+      // If user clicks a top-level nav link that has a dropdown menu (e.g. Services)
+      if (dropdown && dropdown.classList.contains('dropdown')) {
+        // On mobile & tablet (matching the CSS 1100px breakpoint), toggle dropdown accordion
+        if (window.innerWidth <= 1100) {
+          e.preventDefault();
+          a.parentElement.classList.toggle('dropdown-active');
+          return; // Keep menu open so user can pick a sub-service
+        }
+      }
+      
+      // For all other links, or regular links, close the hamburger menu
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.querySelectorAll('.dropdown-active').forEach(li => li.classList.remove('dropdown-active'));
+    });
+  });
+}
 
 // Scroll reveal
 const observer = new IntersectionObserver((entries) => {
@@ -49,7 +49,7 @@ function handleForm(e) {
   const text = encodeURIComponent(
     `Hi Daypower! 👋\n\nName: ${name}\nPhone: ${phone}\nService: ${service}\nMessage: ${msg}\n\nPlease send me a free solar quote.`
   );
-  window.open(`https://wa.me/919437527157?text=${text}`, '_blank');
+  window.open(`https://wa.me/919437527857?text=${text}`, '_blank');
 }
 
 // ── TESTIMONIAL SLIDER ──────────────────────────────────────────

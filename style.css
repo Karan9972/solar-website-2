@@ -421,6 +421,7 @@ nav#navbar.scrolled {
   }
 
   .nav-links .dropdown {
+    display: none;
     position: static;
     opacity: 1;
     pointer-events: all;
@@ -429,6 +430,13 @@ nav#navbar.scrolled {
     border: none;
     background: var(--bg-soft);
     margin-top: 4px;
+    border-radius: 8px;
+    padding: 6px 8px;
+  }
+
+  .nav-links>li.dropdown-active .dropdown {
+    display: flex;
+    flex-direction: column;
   }
 }
 
